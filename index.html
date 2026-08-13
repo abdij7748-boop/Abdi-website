@@ -1,11 +1,687 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>My First Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Abdi | Personal Website</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(17, 17, 17, 0.95);
+
+            padding: 15px 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #aaa;
+        }
+
+        /* HOME */
+
+        .hero {
+            min-height: 90vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 40px 20px;
+        }
+
+        .profile {
+            width: 170px;
+            height: 170px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 5px solid white;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: #555;
+        }
+
+        .hero p {
+            max-width: 550px;
+
+            margin-bottom: 25px;
+
+            color: #666;
+        }
+
+        .button {
+            display: inline-block;
+
+            background: #111;
+            color: white;
+
+            padding: 13px 25px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            background: #333;
+        }
+
+        /* GENERAL SECTIONS */
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 40px;
+
+            align-items: center;
+        }
+
+        .about h3 {
+            font-size: 25px;
+
+            margin-bottom: 15px;
+        }
+
+        .about p {
+            color: #666;
+        }
+
+        .skills {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+        .skill {
+            background: #eee;
+
+            padding: 8px 14px;
+
+            border-radius: 20px;
+
+            font-size: 14px;
+        }
+
+        /* SERVICES */
+
+        .services {
+            background: #f5f5f5;
+        }
+
+        .cards {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+
+            padding: 30px 20px;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card .icon {
+            font-size: 40px;
+
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #777;
+
+            font-size: 14px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            background: white;
+        }
+
+        form {
+            max-width: 600px;
+
+            margin: auto;
+        }
+
+        input,
+        textarea {
+
+            width: 100%;
+
+            padding: 14px;
+
+            margin-bottom: 15px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 150px;
+
+            resize: vertical;
+        }
+
+        button {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #111;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        /* FOOTER */
+
+        footer {
+
+            background: #111;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 30px 20px;
+        }
+
+        footer p {
+
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            header {
+
+                flex-direction: column;
+
+                gap: 10px;
+            }
+
+            nav {
+
+                gap: 10px;
+            }
+
+            .hero h1 {
+
+                font-size: 36px;
+            }
+
+            .about-content {
+
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
 </head>
 
+
 <body>
-    <h1>Hello! 👋</h1>
-    <p>I am building my first website using my phone.</p>
+
+
+    <!-- NAVIGATION -->
+
+    <header>
+
+        <div class="logo">
+            ABDI
+        </div>
+
+        <nav>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#services">
+                Services
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- HOME -->
+
+    <section class="hero" id="home">
+
+        <img
+            src="profile.jpg"
+            alt="Abdi"
+            class="profile"
+        >
+
+        <h1>
+            Hi, I'm <span>Abdi</span> 👋
+        </h1>
+
+        <p>
+            Welcome to my personal website.
+            I'm learning web development and building
+            creative things with technology.
+        </p>
+
+        <a
+            href="#about"
+            class="button"
+        >
+            Discover More
+        </a>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section
+        class="about"
+        id="about"
+    >
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    About Me
+                </h2>
+
+                <p>
+                    A little bit about who I am.
+                </p>
+
+            </div>
+
+
+            <div class="about-content">
+
+
+                <div>
+
+                    <h3>
+                        I'm learning and building 🚀
+                    </h3>
+
+                    <p>
+                        I'm currently learning how to create
+                        websites using HTML, CSS and JavaScript.
+                        My goal is to become a skilled web developer
+                        and create useful and beautiful websites.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        My Skills
+                    </h3>
+
+                    <div class="skills">
+
+                        <div class="skill">
+                            HTML
+                        </div>
+
+                        <div class="skill">
+                            CSS
+                        </div>
+
+                        <div class="skill">
+                            JavaScript
+                        </div>
+
+                        <div class="skill">
+                            Web Design
+                        </div>
+
+                        <div class="skill">
+                            Mobile Design
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+
+    <section
+        class="services"
+        id="services"
+    >
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    What I Do
+                </h2>
+
+                <p>
+                    Things I'm learning and working on.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        Web Development
+                    </h3>
+
+                    <p>
+                        Creating websites using modern
+                        web technologies.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        🎨
+                    </div>
+
+                    <h3>
+                        Web Design
+                    </h3>
+
+                    <p>
+                        Designing clean and attractive
+                        user interfaces.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="icon">
+                        📱
+                    </div>
+
+                    <h3>
+                        Mobile Design
+                    </h3>
+
+                    <p>
+                        Building websites that work
+                        beautifully on phones.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section
+        class="contact"
+        id="contact"
+    >
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Contact Me
+                </h2>
+
+                <p>
+                    Send me a message.
+                </p>
+
+            </div>
+
+
+            <form
+                onsubmit="sendMessage(event)"
+            >
+
+                <input
+                    type="text"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    placeholder="Your Email"
+                    required
+                >
+
+                <textarea
+                    placeholder="Your Message"
+                    required
+                ></textarea>
+
+                <button
+                    type="submit"
+                >
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h3>
+            ABDI
+        </h3>
+
+        <p>
+            © 2026 Abdi. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function sendMessage(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Thank you! Your message has been received."
+            );
+
+        }
+
+    </script>
+
+
 </body>
+
 </html>
